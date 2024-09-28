@@ -124,6 +124,11 @@ function draw() {
       coins.splice(index, 1); // Xóa coin khi lấy được
       score += 10; // Cộng điểm
     }
+
+    if (score == 100) {
+      alert("You Won!");
+      window.location.reload();
+    }
   });
 
   ctx.fillStyle = "black";

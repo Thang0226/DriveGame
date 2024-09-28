@@ -71,14 +71,19 @@ function generateCoins() {
     coins.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      width: 30,
-      height: 30,
+      width: 40,
+      height: 40,
+      image: function () {
+        let img = new Image();
+        img.src = "Coin.jpg";
+        return img;
+      },
     });
   }
 }
 generateCoins();
 
-// Update car direction and draw everything
+// Update and draw everything
 function update() {
   let radians = (car.direction * Math.PI) / 180; // Chuyển độ thành radian
   car.x += car.speed * Math.cos(radians); // Cập nhật vị trí theo trục x
@@ -108,7 +113,7 @@ function draw() {
 
   coins.forEach((coin, index) => {
     ctx.fillStyle = "gold";
-    ctx.fillRect(coin.x, coin.y, coin.width, coin.height);
+    ctx.drawImage(coin.image(), coin.x, coin.y, coin.width, coin.height);
 
     if (
       car.x < coin.x + coin.width &&

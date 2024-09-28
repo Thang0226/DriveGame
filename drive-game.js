@@ -84,6 +84,7 @@ function update() {
   car.x += car.speed * Math.cos(radians); // Cập nhật vị trí theo trục x
   car.y -= car.speed * Math.sin(radians); // Cập nhật vị trí theo trục y
   draw();
+  setTimeout(update, 1000 / 60); // Update 60 times per second
 }
 
 function draw() {
@@ -125,4 +126,4 @@ function draw() {
   ctx.fillText("Score: " + score, 10, 30);
 }
 
-setInterval(update, 1000 / 60); // Cập nhật game 60 lần/giây
+update();
